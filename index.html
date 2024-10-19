@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Scale Converter</title>
+    <style>
+        body {
+            background-color: #333;
+            font-family: Arial, sans-serif;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .converter {
+            background-color: #444;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #ff9900;
+            border: none;
+            border-radius: 4px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #e68a00;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="converter">
+        <h1>Recipe Scale Converter</h1>
+        <input type="number" id="originalAmount" placeholder="Original Amount">
+        <input type="number" id="scalingFactor" placeholder="Scaling Factor">
+        <button onclick="convert()">Convert</button>
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        function convert() {
+            const originalAmount = parseFloat(document.getElementById('originalAmount').value);
+            const scalingFactor = parseFloat(document.getElementById('scalingFactor').value);
+            const resultDiv = document.getElementById('result');
+
+            if (!isNaN(originalAmount) && !isNaN(scalingFactor)) {
+                const newAmount = originalAmount * scalingFactor;
+                resultDiv.textContent = `New Amount: ${newAmount}`;
+            } else {
+                resultDiv.textContent = 'Please enter valid numbers.';
+            }
+        }
+    </script>
+</body>
+</html>
